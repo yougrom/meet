@@ -4,7 +4,7 @@ This React-based application is its user-centric design, ensuring an engaging, a
 
 ---
 
-In the context of my Meet app, serverless functions can be employed to manage dynamic, event-driven functionalities such as user notifications, real-time updates, or processing user inputs. By using serverless architecture, can ensure that the app scales seamlessly with user demand, maintaining performance without incurring unnecessary costs during periods of low activity. This approach allows for a more responsive, efficient application that optimally utilizes resources, ultimately enhancing the user experience while maintaining operational efficiency.
+In the context of my Meet app, serverless functions can be employed to manage dynamic, event-driven functionalities such as user notifications, real-time updates, or processing user inputs. By using serverless architecture, can ensure that the app scales seamlessly with user demand, maintaining performance without incurring unnecessary costs during periods of low activity. This approach allows for a more responsive, efficient application that optimally utilizes resources, ultimately enhancing the user experience while maintaining operational efficiency!
 
 ---
 

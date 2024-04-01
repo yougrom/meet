@@ -72,3 +72,58 @@ module.exports.getAccessToken = async (event) => {
       };
     });
 };
+
+module.exports.getCalendarEvents = async (event) => {
+  return new Promise((resolve, reject) => {
+    // Extract the access_token from the event pathParameters
+    const accessToken = decodeURIComponent(`${event.pathParameters.access_token}`);
+
+    // Set the OAuth2 client credentials with the received access token
+    oAuth2Client.setCredentials({
+      access_token: accessToken,
+    });
+
+    // Use the Google Calendar API to list events
+    calendar.events.list({
+      calendarId: CALENDAR_ID,
+      auth: oAuth2Client,
+      timeMin: new Date().toISOString(),
+      singleEvents: true,
+      orderBy: "startTime",
+    }, (error, response) => {
+      if (error) {
+        // If an error occurs, reject the promise with the error
+        reject(error);
+      } else {
+        // This includes not just the items array, but the entire response
+        resolve(response);
+      }
+    });
+  })
+  .then((response) => {
+    // Process the successful response here
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
+      body: JSON.stringify({
+        events: response.data.items, // Return the events array from the response
+      }),
+    };
+  })
+  .catch((error) => {
+    // Handle any errors that occurred during the API call
+    return {
+      statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
+      body: JSON.stringify({
+        error: error.message, // Providing a clear error message
+      }),
+    };
+  })
+};

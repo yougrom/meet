@@ -1,8 +1,8 @@
 // src/components/CitySearch.js
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const CitySearch = ({ allLocations }) => {
+const CitySearch = ({ allLocations, setCurrentCity }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -17,13 +17,18 @@ const CitySearch = ({ allLocations }) => {
     setSuggestions(filteredLocations);
   };
 
-/************ Scenario 3 */
+  /************ Scenario 3 */
   const handleItemClicked = (event) => {
     const value = event.target.textContent;
     setQuery(value);
-    setShowSuggestions(false); // to hide the list
+    setShowSuggestions(false);
+    setCurrentCity(value);
   };
-/************ Scenario 3 End*/
+  /************ Scenario 3 End*/
+
+  useEffect(() => {
+    setSuggestions(allLocations);
+  }, [`${allLocations}`]);
 
   return (
     <div id="city-search">
@@ -48,6 +53,6 @@ const CitySearch = ({ allLocations }) => {
       }
     </div>
   )
- };
+};
  
  export default CitySearch;

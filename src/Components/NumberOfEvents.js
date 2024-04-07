@@ -2,12 +2,11 @@
 
 import React, { useState } from 'react';
 
-const NumberOfEvents = () => {
-  const [numberOfEvents, setNumberOfEvents] = useState(32); // Default number of events
+const NumberOfEvents = ({currentNOE, setCurrentNOE}) => { // Accept props
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    setNumberOfEvents(value);
+    setCurrentNOE(value); // Use the function passed down from App to set the value
   };
 
   return (
@@ -16,9 +15,9 @@ const NumberOfEvents = () => {
       <input
         id="number-of-events"
         type="number"
-        value={numberOfEvents}
+        value={currentNOE} // Bind input to currentNOE from App
         onChange={handleInputChange}
-        min="1" // Prevents the user from entering a value less than 1
+        min="1"
       />
     </div>
   );

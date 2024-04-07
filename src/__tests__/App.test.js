@@ -54,5 +54,24 @@ describe('<App /> integration', () => {
     });
 
   });
+  /**HT Test */
+  test('User can change the number of events displayed', async () => {
+    const user = userEvent.setup();
+    const { getByLabelText, findAllByRole } = render(<App />);
 
+    // Assuming your NumberOfEvents input field is correctly labeled
+    const NumberOfEventsInput = getByLabelText(/number of events:/i);
+
+    // First, clear the default value, then type a new value
+    await user.type(NumberOfEventsInput, '{backspace}{backspace}10');
+
+    // Await for the events list to update based on the new number of events
+    const updatedEventsList = await findAllByRole('listitem');
+
+    // Verify the length of the events list matches the new input
+    expect(updatedEventsList).toHaveLength(10);
+  });
+
+
+  
 });

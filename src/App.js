@@ -16,21 +16,21 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, [currentCity]);
+  }, [currentCity, currentNOE]); // Add currentNOE as a dependency
 
   const fetchData = async () => {
-    const allEvents = await getEvents();
+    const allEvents = await getEvents(); // Assume getEvents can now accept a limit parameter
     const filteredEvents = currentCity === "See all cities" ?
-      allEvents :
-      allEvents.filter(event => event.location === currentCity)
-    setEvents(filteredEvents.slice(0, currentNOE));
+      allEvents.slice(0, currentNOE) : // Use slice to limit the events based on currentNOE
+      allEvents.filter(event => event.location === currentCity).slice(0, currentNOE);
+    setEvents(filteredEvents);
     setAllLocations(extractLocations(allEvents));
   }
 
   return (
     <div className="App">
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-      <NumberOfEvents />
+      <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE}/> 
       <EventList events={events} />
     </div>
   );

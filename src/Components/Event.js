@@ -10,7 +10,7 @@ const Event = ({ event }) => {
       <h2>{event.summary}</h2>
       <p>Starts: {new Date(event.created).toLocaleString()}</p>
       <p>Location: {event.location}</p>
-      <button onClick={() => setIsVisible(!isVisible)}>
+      <button className="details-btn" onClick={() => setIsVisible(!isVisible)}>
         {isVisible ? 'Hide Details' : 'show details'}
       </button>
       {isVisible && (

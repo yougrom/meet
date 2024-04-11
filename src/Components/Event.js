@@ -14,7 +14,7 @@ const Event = ({ event }) => {
         {isVisible ? 'Hide Details' : 'show details'}
       </button>
       {isVisible && (
-        <div className="event-details">
+        <div className="event-details" data-testid="event-details">
           <p>Description: {event.description}</p>
         </div>
       )}

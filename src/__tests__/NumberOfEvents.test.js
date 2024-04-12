@@ -1,13 +1,14 @@
 // src/__tests__/NumberOfEvents.test.js
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import NumberOfEvents from '../components/NumberOfEvents';
+import NumberOfEvents from '../Components/NumberOfEvents';
 
 describe('<NumberOfEvents /> component', () => {
   let setCurrentNOE = jest.fn();
   beforeEach(() => {
     // Render the component with the mock function and initial value
-    render(<NumberOfEvents currentNOE={32} setCurrentNOE={setCurrentNOE} />);
+
+    render(<NumberOfEvents currentNOE={32} setCurrentNOE={setCurrentNOE} setErrorAlert={() => {  }} />);
   });
 
   test('contains an element with the role of spinbutton', () => {

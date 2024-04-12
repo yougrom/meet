@@ -16,7 +16,7 @@ defineFeature(feature, test => {
 
     when('the user has not specified a number of events', () => {
       // Assuming the default is set without user action, no need to simulate events here
-      ({ getByLabelText } = render(<NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} />));
+      ({ getByLabelText } = render(<NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} setErrorAlert={() => {  }}/>));
     });
 
     then('the application displays 32 events by default', () => {
@@ -32,7 +32,7 @@ defineFeature(feature, test => {
     });
 
     given('the user is viewing the default number of events', () => {
-      ({ getByLabelText, getByDisplayValue } = render(<NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} />));
+      ({ getByLabelText, getByDisplayValue } = render(<NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} setErrorAlert={() => {  }} />));
       expect(getByDisplayValue('32')).toBeTruthy();
     });
 

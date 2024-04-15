@@ -58,4 +58,4 @@ class WarningAlert extends Alert {
   }
 }
 
-export { InfoAlert, ErrorAlert, WarningAlert };
+export { Alert, InfoAlert, ErrorAlert, WarningAlert };

@@ -21,12 +21,21 @@ export const getEvents = async () => {
     return mockData;
   }
   const token = await getAccessToken();
+
+  if (!navigator.onLine) {
+    const events = localStorage.getItem("lastEvents");
+    // NProgress.done();
+    return events?JSON.parse(events):[];
+  }
   if (token) {
     removeQuery();
     const url =  "https://ussloejj57.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
     const response = await fetch(url);
     const result = await response.json();
     if (result) {
+
+      localStorage.setItem("lastEvents", JSON.stringify(result.events));
+
       return result.events;
     } else return null; 
   }

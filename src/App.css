@@ -1,4 +1,42 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+/*==============================
+Add Global Text Parametrs
+===============================*/
+:root {
+  --base-color-1: #f18a07;
+  --base-color-2: #f2f2f2;
+  --base-color-3: #1b1b1b;
+  --box-shadow-color: rgb(92 44 25 / 70%);
+  --box-shadow: 10px 10px 50px var(--box-shadow-color);
+  --color-white: #fff;
+  --color-grey: rgb(204 204 204 / 50%);
+  --font-base: "Inter", sans-serif;
+  --transition-duration: 0.5s;
+  --largerScale: 1.01;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: var(--base-color-3);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 300;
+  color: var(--base-color-3);
+
+  background-color: var(--color-grey);
+
+  background-size: auto;
+  background-repeat: repeat;
+}
+
 .App {
   text-align: center;
   padding: 2% 5%;
@@ -68,29 +106,82 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
-.event {
-  padding: 10px 10px 35px;
-  margin-bottom: 10px;
-  text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  position: relative;
-}
-
-.details-btn {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
-  padding: 5px 8px;
-  border-radius: 4px;
-  outline: none;
-  cursor: pointer;
-}
-
 .alerts-container {
   position: fixed;
   top: 0px;
   left: 20px;
   width: 250px;
   z-index: 1000;
+}
+
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 20px;
+  padding-top: 20px;
+
+  border-radius: 8px;
+  background-color: var(--base-color-2);
+  border: 1px solid var(--color-grey);
+}
+
+@media (max-width: 768px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.details-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  margin: 20px 0px 10px 0px;
+  color: var(--base-color-3);
+  font-weight: 400;
+  text-transform: uppercase;
+
+  border: 1px solid var(--base-color-3);
+  border-radius: 50px;
+
+  background-color: transparent;
+
+  transition-property: color, border, transform;
+  transition-duration: var(--transition-duration), var(--transition-duration),
+    var(--transition-duration);
+}
+
+.details-btn:hover,
+.details-btn:active,
+.details-btn:focus {
+  color: var(--base-color-1);
+  border: 1px solid var(--base-color-1);
+
+  transform: scale(var(--largerScale));
+}
+
+@media all and (min-width: 768px) {
+  #event-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px;
+  }
+}
+
+.event {
+  padding: 10px 10px 35px;
+  text-align: center;
+  border: 1px solid var(--color-grey);
+  border-radius: 4px;
+  background-color: var(--base-color-2);
+}
+
+@media all and (max-width: 767px) {
+  .event {
+    margin-bottom: 10px;
+  }
+}
+
+.event p {
+  font-size: 18px;
+  line-height: 150%;
 }

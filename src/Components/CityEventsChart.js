@@ -14,17 +14,13 @@ const CityEventsChart = ({ allLocations, events }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    setData(getData());
-  }, [`${data}`]);
-
-  const getData = () => {
-    const data = allLocations.map((location) => {
-      const count = events.filter((event) => event.location === location).length
-      const city = location.split(', ')[0]
+    const newData = allLocations.map((location) => {
+      const count = events.filter((event) => event.location === location).length;
+      const city = location.split(', ')[0]; // Assuming the city name is before the comma
       return { city, count };
-    })
-    return data;
-  };
+    });
+    setData(newData);
+  }, [allLocations, events]); // Depend on allLocations and events instead of data
 
   return (
     <ResponsiveContainer width="99%" height={400}>
@@ -40,7 +36,7 @@ const CityEventsChart = ({ allLocations, events }) => {
         <XAxis type="category" dataKey="city" name="City" />
         <YAxis type="number" dataKey="count" name="Number of events" />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-        <Scatter name="A school" data={data} fill="#8884d8" />
+        <Scatter name="City Events" data={data} fill="#8884d8" />
       </ScatterChart>
     </ResponsiveContainer>
   );

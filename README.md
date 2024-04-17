@@ -1,8 +1,22 @@
-# Meet App
+# Meet App 
+
+[Link to my project](https://yougrom.github.io/meet/) 
+
+## Project Objective
 
 This React-based application is its user-centric design, ensuring an engaging, accessible, and seamless user experience across all devices and browsers. Key features include direct Google Calendar integration for efficient schedule management, offline functionality as a Progressive Web App, and the ability to install on both desktop and mobile devices for enhanced accessibility. Additionally, the application's high reliability, underscored by exhaustive test-driven development and a test coverage exceeding 90%, guarantees a robust and dependable user experience.
 
+The objective of this project is to build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application utilizes the Google Calendar API to fetch upcoming events.
+
 ---
+
+## Project Features
+
+This README outlines the features and corresponding user stories of the project.
+
+---
+
+## Meet App Use
 
 In the context of my Meet app, serverless functions can be employed to manage dynamic, event-driven functionalities such as user notifications, real-time updates, or processing user inputs. By using serverless architecture, can ensure that the app scales seamlessly with user demand, maintaining performance without incurring unnecessary costs during periods of low activity. This approach allows for a more responsive, efficient application that optimally utilizes resources, ultimately enhancing the user experience while maintaining operational efficiency!
 
